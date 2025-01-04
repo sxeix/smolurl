@@ -11,17 +11,30 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+/**
+ * Url Helper service
+ */
 @Service
 public class UrlHelperImpl implements UrlHelper {
 
     private final UUIDService uuidService;
     private final UrlService urlService;
 
-    public UrlHelperImpl(UUIDService uuidService, UrlService urlService) {
+    public UrlHelperImpl(
+            final UUIDService uuidService,
+            final UrlService urlService
+    ) {
         this.uuidService = uuidService;
         this.urlService = urlService;
     }
 
+    /**
+     * Creates a short url (UUIDv5 resolvable id)
+     *
+     * @param rawUrl the url to be shortened
+     * @return UUIDv5 resolvable id
+     * @throws UrlShortenException something went wrong shortening the url
+     */
     @Override
     public CreatedUrl createShortUrl(final RawUrl rawUrl) throws UrlShortenException {
 
@@ -37,6 +50,14 @@ public class UrlHelperImpl implements UrlHelper {
         return new CreatedUrl(uuid);
     }
 
+    /**
+     * Resolves a UUIDv5 to the corresponding url
+     *
+     * @param uuid the UUIDv5 to be resolved
+     * @return the URI to be redirected to
+     * @throws UrlNotFoundException the Url could not be found as a document
+     * @throws URISyntaxException   the Url found from the UUIDv5 is not a valid URI
+     */
     @Override
     public URI resolveUrl(final UUID uuid) throws UrlNotFoundException, URISyntaxException {
 

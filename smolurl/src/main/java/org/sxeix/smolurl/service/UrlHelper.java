@@ -9,6 +9,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+/**
+ * Url Helper interface
+ */
 public interface UrlHelper {
     CreatedUrl createShortUrl(RawUrl rawUrl) throws UrlShortenException;
     URI resolveUrl(UUID uuid) throws UrlNotFoundException, URISyntaxException;

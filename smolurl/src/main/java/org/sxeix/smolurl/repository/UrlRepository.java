@@ -5,5 +5,8 @@ import org.sxeix.smolurl.model.Url;
 
 import java.util.UUID;
 
+/**
+ * Url mongodb repository interface
+ */
 public interface UrlRepository extends MongoRepository<Url, UUID> {
 }
