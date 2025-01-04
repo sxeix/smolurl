@@ -62,7 +62,7 @@ public class UrlHelperImpl implements UrlHelper {
     public URI resolveUrl(final UUID uuid) throws UrlNotFoundException, URISyntaxException {
 
         var url = urlService.findById(uuid).orElseThrow(() -> new UrlNotFoundException(String.format("Url not found for uuid %s", uuid)));
-        return new URI(url.getUrl());
+        return new URI(url.url());
     }
 
 }
