@@ -1,7 +1,8 @@
 package org.sxeix.smolurl.dto;
 
+import java.util.UUID;
+
 public record CreatedUrl(
-        String id,
-        String completeUrl
+        UUID id
 ) {
 }

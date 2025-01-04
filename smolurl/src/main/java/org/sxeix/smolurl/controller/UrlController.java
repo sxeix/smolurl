@@ -5,6 +5,7 @@ import org.sxeix.smolurl.dto.RawUrl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.sxeix.smolurl.exceptions.UrlShortenException;
 import org.sxeix.smolurl.service.UrlHelper;
 
 import java.net.URI;
@@ -23,14 +24,18 @@ public class UrlController {
     @PostMapping(
             value = "/create"
     )
-    public ResponseEntity<CreatedUrl> create(@RequestBody final RawUrl rawUrl) {
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<CreatedUrl> create(@RequestBody final RawUrl rawUrl) throws UrlShortenException {
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(urlHelper.createShortUrl(rawUrl));
     }
 
     @GetMapping(
             value = "/{id}"
     )
     public ResponseEntity<Void> resolve(@PathVariable("id") final UUID uuid) throws URISyntaxException {
+
         return ResponseEntity.status(HttpStatus.SEE_OTHER).location(new URI("https://www.google.co.uk/")).build();
     }
 
