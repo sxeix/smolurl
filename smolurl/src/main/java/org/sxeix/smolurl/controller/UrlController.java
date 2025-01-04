@@ -5,10 +5,10 @@ import org.sxeix.smolurl.dto.RawUrl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.sxeix.smolurl.exceptions.UrlShortenException;
+import org.sxeix.smolurl.exception.UrlNotFoundException;
+import org.sxeix.smolurl.exception.UrlShortenException;
 import org.sxeix.smolurl.service.UrlHelper;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
@@ -34,9 +34,12 @@ public class UrlController {
     @GetMapping(
             value = "/{id}"
     )
-    public ResponseEntity<Void> resolve(@PathVariable("id") final UUID uuid) throws URISyntaxException {
+    public ResponseEntity<Void> resolve(@PathVariable("id") final UUID uuid) throws URISyntaxException, UrlNotFoundException {
 
-        return ResponseEntity.status(HttpStatus.SEE_OTHER).location(new URI("https://www.google.co.uk/")).build();
+        return ResponseEntity
+                .status(HttpStatus.SEE_OTHER)
+                .location(urlHelper.resolveUrl(uuid))
+                .build();
     }
 
 }

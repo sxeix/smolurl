@@ -1,4 +1,4 @@
-package org.sxeix.smolurl.exceptions;
+package org.sxeix.smolurl.exception;
 
 public class UrlShortenException extends Exception {
     public UrlShortenException(final String message) {

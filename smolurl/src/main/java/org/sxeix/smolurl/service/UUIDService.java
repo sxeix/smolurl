@@ -1,6 +1,6 @@
 package org.sxeix.smolurl.service;
 
-import org.sxeix.smolurl.exceptions.UrlShortenException;
+import org.sxeix.smolurl.exception.UrlShortenException;
 
 import java.util.UUID;
 

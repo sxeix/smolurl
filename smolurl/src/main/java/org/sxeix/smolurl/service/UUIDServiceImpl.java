@@ -3,7 +3,7 @@ package org.sxeix.smolurl.service;
 import org.springframework.stereotype.Service;
 import org.sxeix.exception.ParameterValidationException;
 import org.sxeix.generator.UUIDGen;
-import org.sxeix.smolurl.exceptions.UrlShortenException;
+import org.sxeix.smolurl.exception.UrlShortenException;
 
 import java.util.UUID;
 

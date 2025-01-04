@@ -2,6 +2,7 @@
   <configuration default="false" name="SmolUrlApplication [run]" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="org.sxeix.smolurl.SmolurlApplication" />
     <module name="smolurl" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.config.location=file:C:\Users\james\projects\configs\smolurl\application.properties" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
