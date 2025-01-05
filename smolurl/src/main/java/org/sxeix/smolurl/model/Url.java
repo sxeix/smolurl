@@ -2,6 +2,7 @@ package org.sxeix.smolurl.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.net.URI;
 import java.util.UUID;
 
 /**
@@ -9,6 +10,6 @@ import java.util.UUID;
  */
 public record Url(
         @Id UUID id,
-        String url
+        URI url
 ) {
 }

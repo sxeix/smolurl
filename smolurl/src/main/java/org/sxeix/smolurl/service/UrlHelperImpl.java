@@ -38,7 +38,7 @@ public class UrlHelperImpl implements UrlHelper {
     @Override
     public CreatedUrl createShortUrl(final RawUrl rawUrl) throws UrlShortenException {
 
-        var uuid = uuidService.makeUUID(rawUrl.url());
+        var uuid = uuidService.makeUUID(rawUrl.url().toString());
         var url = urlService.findById(uuid);
         if (url.isPresent()) {
             return new CreatedUrl(uuid);
@@ -59,10 +59,10 @@ public class UrlHelperImpl implements UrlHelper {
      * @throws URISyntaxException   the Url found from the UUIDv5 is not a valid URI
      */
     @Override
-    public URI resolveUrl(final UUID uuid) throws UrlNotFoundException, URISyntaxException {
+    public URI resolveUrl(final UUID uuid) throws UrlNotFoundException {
 
-        var url = urlService.findById(uuid).orElseThrow(() -> new UrlNotFoundException(String.format("Url not found for uuid %s", uuid)));
-        return new URI(url.url());
+        var resolvedUrl = urlService.findById(uuid).orElseThrow(() -> new UrlNotFoundException(String.format("Url not found for uuid %s", uuid)));
+        return resolvedUrl.url();
     }
 
 }
