@@ -17,7 +17,7 @@
     
         const { id } = await response.json();
     
-        shortenUrl = window.location.href + `${id}`;
+        // shortenUrl = window.location.href + `${id}`;
         shortenUrl = `http://localhost:8080/${id}`;
     }
 
