@@ -8,7 +8,6 @@ import org.sxeix.smolurl.exception.UrlShortenException;
 import org.sxeix.smolurl.model.Url;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.UUID;
 
 /**
@@ -56,7 +55,6 @@ public class UrlHelperImpl implements UrlHelper {
      * @param uuid the UUIDv5 to be resolved
      * @return the URI to be redirected to
      * @throws UrlNotFoundException the Url could not be found as a document
-     * @throws URISyntaxException   the Url found from the UUIDv5 is not a valid URI
      */
     @Override
     public URI resolveUrl(final UUID uuid) throws UrlNotFoundException {

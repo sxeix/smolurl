@@ -10,7 +10,6 @@ import org.sxeix.smolurl.exception.UrlNotFoundException;
 import org.sxeix.smolurl.exception.UrlShortenException;
 import org.sxeix.smolurl.service.UrlHelper;
 
-import java.net.URISyntaxException;
 import java.util.UUID;
 
 /**
@@ -21,7 +20,7 @@ public class UrlController {
 
     private final UrlHelper urlHelper;
 
-    private UrlController(final UrlHelper urlHelper) {
+    public UrlController(final UrlHelper urlHelper) {
         this.urlHelper = urlHelper;
     }
 
@@ -49,13 +48,12 @@ public class UrlController {
      *
      * @param uuid the UUID key
      * @return a redirect to the desired page
-     * @throws URISyntaxException   URI for UUID is invalid
      * @throws UrlNotFoundException The URL record does not exist
      */
     @GetMapping(
             value = "/{id}"
     )
-    public ResponseEntity<Void> resolve(@PathVariable("id") final UUID uuid) throws URISyntaxException, UrlNotFoundException {
+    public ResponseEntity<Void> resolve(@PathVariable("id") final UUID uuid) throws UrlNotFoundException {
 
         return ResponseEntity
                 .status(HttpStatus.SEE_OTHER)
