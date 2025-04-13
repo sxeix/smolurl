@@ -18,7 +18,7 @@
         const { id } = await response.json();
     
         // shortenUrl = window.location.href + `${id}`;
-        shortenUrl = `http://localhost:8080/${id}`;
+        shortenUrl = `http://localhost:3000/r/${id}`;
     }
 
 </script>
