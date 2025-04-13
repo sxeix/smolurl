@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+
+  mongodb:
+    image: mongo
+    networks:
+      - app-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - db:/data/db
+
+  backend:
+    depends_on:
+      - mongodb
+    image: smolurl-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD} 
+      DATABASE_HOST: ${DATABASE_HOST}
+
+  frontend:
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    image: smolurl-frontend
+    ports:
+      - "4173:4173"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db:
