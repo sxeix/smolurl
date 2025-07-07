@@ -29,13 +29,13 @@ services:
       - app-network
     image: smolurl-frontend
     ports:
-      - "4173:4173"
+      - "4200:8080"
 
 
   nginx:
     image: nginx:latest
     ports:
-      - "3000:3000" # Expose port 80 to the host
+      - "3000:3000"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf # Mount the Nginx config
     depends_on:

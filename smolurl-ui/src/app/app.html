@@ -1,0 +1,31 @@
+<main class="main">
+  <div class="content">
+    <div class="container">
+      <div class="header_section">
+        <div class="header">
+          <h1>smolurl.</h1>
+          <p>
+            Welcome to smolurl, a not-so-short solution to generating (sometimes
+            shorter) urls.
+          </p>
+        </div>
+      </div>
+      <div class="input_section">
+        <input
+          type="text"
+          [formControl]="urlInput"
+          class="input"
+          placeholder="Enter your URL here..."
+        />
+        <button class="button" (click)="generateUrl()">Generate</button>
+      </div>
+      <div class="output_section">
+        <div class="output" *ngIf="generatedUrlId$ | async as generatedUrlId">
+          <p>Shortened URL: {{ getGeneratedUrl(generatedUrlId) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<router-outlet />
